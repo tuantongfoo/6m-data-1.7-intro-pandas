@@ -254,6 +254,14 @@ print(books[['title', 'price_tier', 'sales_rank', 'genre_encoded']])
 
 The manager wants a report comparing average price and total revenue by `price_tier`. Use `groupby()` to generate this summary. Which tier contributes the most total revenue despite having the lowest average price?
 
+```
+tier_summary = books.groupby("price_tier").agg(
+    average_price=("price", "mean"),
+    total_revenue=("revenue", "sum")
+)
+
+display(tier_summary)
+```
 ---
 
 ## 💬 Reflection (5 min)
