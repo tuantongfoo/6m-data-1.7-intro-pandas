@@ -142,6 +142,26 @@ print(f"Total revenue: £{books['revenue'].sum():,.2f}")
 3. Filter books that are **in stock** AND have a **price above £40**.
 4. Find the book with the **highest revenue** using `.loc` with `.idxmax()`.
 
+```
+# 1. Select the title and revenue for books in the Data genre
+data_books = books.loc[books["genre"] == "Data", ["title", "revenue"]]
+print(data_books)
+
+# 2. Retrieve the last 3 rows and first 3 columns
+last_three = books.iloc[-3:, :3]
+print(last_three)
+
+# 3. Filter for books that are in stock and priced above £40
+in_stock_over_40 = books.loc[
+    books["in_stock"] & (books["price"] > 40)
+]
+print(in_stock_over_40)
+
+# 4. Find the row for the book with the highest revenue
+highest_revenue_book = books.loc[books["revenue"].idxmax()]
+print(highest_revenue_book)
+```
+
 <details>
 <summary>💡 Hint</summary>
 
