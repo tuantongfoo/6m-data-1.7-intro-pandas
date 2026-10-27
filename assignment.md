@@ -199,6 +199,26 @@ print(f"Top earner: {top_book['title']} — £{top_book['revenue']:,.2f}")
 3. Add a `sales_rank` column using `.rank(ascending=False)`.
 4. Use `.map()` to encode `genre` as a number: `{'Tech': 0, 'Data': 1}`.
 
+```
+# 1. Categorize each book by price
+books["price_tier"] = books["price"].apply(
+    lambda price: "Budget" if price < 35
+    else "Standard" if price <= 50
+    else "Premium"
+)
+
+# 2. Sort by revenue, highest first
+books = books.sort_values(by="revenue", ascending=False)
+
+# 3. Rank books by revenue, with the highest ranked 1
+books["sales_rank"] = books["revenue"].rank(ascending=False).astype(int)
+
+# 4. Encode genres as numbers
+books["genre_code"] = books["genre"].map({"Tech": 0, "Data": 1})
+
+display(books)
+```
+
 <details>
 <summary>✅ Solution</summary>
 
