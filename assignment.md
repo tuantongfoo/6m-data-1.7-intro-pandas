@@ -77,6 +77,42 @@ books = pd.DataFrame({
 3. Add a `revenue` column: `price × units_sold`.
 4. What is the total revenue across all books?
 
+```
+import pandas as pd
+
+# Create the DataFrame
+books = pd.DataFrame({
+    "title": ["The Pragmatic Programmer", "Clean Code", "Python Crash Course",
+              "Data Science from Scratch", "Designing Data-Intensive Apps"],
+    "author": ["Hunt & Thomas", "Robert Martin", "Eric Matthes",
+               "Joel Grus", "Martin Kleppmann"],
+    "genre": ["Tech", "Tech", "Tech", "Data", "Data"],
+    "price": [45.99, 38.50, 29.99, 42.00, 55.00],
+    "units_sold": [120, 95, 200, 80, 60],
+    "in_stock": [True, True, False, True, False]
+})
+
+# 1. Display column information and non-null counts
+print("Task 1")
+books.info()
+
+# 2. Display summary statistics, then get average price and maximum units sold
+print("Task 2")
+display(books.describe())
+display("Average price:", books["price"].mean())
+display("Maximum units sold:", books["units_sold"].max())
+
+# 3. Add a revenue column
+print("Task 3")
+books["revenue"] = books["price"] * books["units_sold"]
+display(books)
+
+# 4. Calculate and display total revenue
+print("Task 4")
+display(books[["title", "revenue"]])
+display("Total revenue:", books["revenue"].sum())
+```
+
 <details>
 <summary>💡 Hint</summary>
 
